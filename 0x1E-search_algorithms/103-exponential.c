@@ -13,40 +13,39 @@
  */
 int exponential_search(int *array, size_t size, int value)
 {
-		size_t bound = 1, left, right, i;
+	size_t bound = 1, left, right, i;
 
-		if (array == NULL || size == 0)
-				return (-1);
-
-		while (bound < size && array[bound] < value)
-		{
-				printf("Value checked array[%lu] = [%d]\n",
-						bound, array[bound]);
-				bound *= 2;
-		}
-
-		left = bound / 2;
-		right = bound >= size ? size - 1 : bound;
-
-		printf("Value found between indexes [%lu] and [%lu]\n", left, right);
-
-		while (left <= right)
-		{
-				printf("Searching in array: ");
-				for (i = left; i < right; i++)
-						printf("%d, ", array[i]);
-				printf("%d\n", array[i]);
-
-				i = (left + right) / 2;
-
-				if (array[i] < value)
-						left = i + 1;
-				else if (array[i] > value)
-						right = i - 1;
-				else
-						return (i);
-		}
-
+	if (array == NULL || size == 0)
 		return (-1);
-}
 
+	while (bound < size && array[bound] < value)
+	{
+		printf("Value checked array[%lu] = [%d]\n",
+			bound, array[bound]);
+			bound *= 2;
+	}
+
+	left = bound / 2;
+	right = bound >= size ? size - 1 : bound;
+
+	printf("Value found between indexes [%lu] and [%lu]\n", left, right);
+
+	while (left <= right)
+	{
+		printf("Searching in array: ");
+		for (i = left; i < right; i++)
+			printf("%d, ", array[i]);
+			printf("%d\n", array[i]);
+
+			i = (left + right) / 2;
+
+		if (array[i] < value)
+			left = i + 1;
+		else if (array[i] > value)
+			right = i - 1;
+		else
+			return (i);
+	}
+
+	return (-1);
+}
